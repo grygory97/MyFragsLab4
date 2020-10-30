@@ -16,12 +16,8 @@ import android.widget.EditText;
 
 public class FourthFragment extends Fragment {
 
-
-    //1.
     private FragsData fragsData;
     private Observer<Integer> numberObserver;
-
-    //2.
     private EditText edit;
     private TextWatcher textWatcher;
     private boolean turnOffWatcher;

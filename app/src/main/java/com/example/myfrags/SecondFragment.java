@@ -2,23 +2,20 @@ package com.example.myfrags;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Observer;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class SecondFragment extends Fragment {
 
     private FragsData fragsData;
     private Observer numberObserver;
-
     private TextView text;
     private Button button;
 
@@ -35,7 +32,7 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         text = (TextView) view.findViewById(R.id.current);
-        button = (button) view.findViewById(R.id.button_increase);
+        button = (Button) view.findViewById(R.id.button_increase);
 
         fragsData = new ViewModelProvider(requireActivity()).get(FragsData.class);
 
