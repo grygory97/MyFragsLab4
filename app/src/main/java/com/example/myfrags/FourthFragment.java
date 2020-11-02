@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-
 public class FourthFragment extends Fragment {
 
     private FragsData fragsData;
@@ -59,30 +58,44 @@ public class FourthFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                edit.setSelection(s.length());
                 if (!turnOffWatcher) {
-
-                    Integer i;
+                    int i;
+                    String zmienna = "0";
                     try {
-                        i = Integer.parseInt(s.toString());
+                        zmienna = s.toString();
                     } catch (NumberFormatException e) {
                         i = fragsData.counter.getValue();
                     }
-                    fragsData.counter.setValue(i);
-
+                    if (checkstatus(zmienna)) {
+                        fragsData.counter.setValue(Integer.parseInt(zmienna));
+                    }
                 } else {
                     turnOffWatcher = !turnOffWatcher;
                 }
             }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+            /*
+            tutaj w text watcherze zmienić bo za szybko odświerza się
+            plus update tablicy frames odpowiednią metodą
+             */
         };
 
         //6.
         edit.addTextChangedListener(textWatcher);
 
         return view;
+    }
+
+    public boolean checkstatus(String tmp) {
+        try {
+            Integer.parseInt(tmp);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
